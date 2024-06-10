@@ -1,0 +1,20 @@
+name: Deploy to Surge
+
+on:
+  push:
+    branches:
+      - main  # O cambia "main" por el nombre de tu rama principal
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Install Surge
+        run: npm install -g surge
+
+      - name: Deploy to Surge
+        run: surge --project ./ --domain <mi-proyecto-web>.surge.sh  # Cambia "<tu-nombre-de-proyecto>" por el nombre que desees para tu proyecto en Surge
